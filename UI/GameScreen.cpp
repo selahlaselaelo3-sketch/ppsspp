@@ -137,8 +137,13 @@ void GameScreen::CreateContentViews(UI::LinearLayout *parent) {
 
 	Margins actionMenuMargins(0, 15, 15, 0);
 
-	ViewGroup *leftColumn = new LinearLayout(ORIENT_VERTICAL, new LinearLayoutParams(1.0f, Margins(8)));
-	parent->Add(leftColumn);
+	ScrollView *leftScroll = new ScrollView(ORIENT_VERTICAL, new LinearLayoutParams(1.0f, Margins(8)));
+
+	ViewGroup *leftColumn = new LinearLayout(ORIENT_VERTICAL, new LinearLayoutParams(FILL_PARENT, WRAP_CONTENT));
+
+	leftScroll->Add(leftColumn);
+
+	parent->Add(leftScroll);
 
 	const bool fileTypeSupportCRC = FileTypeSupportsCRC(info_->fileType);
 
